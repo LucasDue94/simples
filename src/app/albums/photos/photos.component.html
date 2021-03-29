@@ -1,0 +1,20 @@
+<div id="spinner">
+  <mat-spinner *ngIf="loading"></mat-spinner>
+</div>
+<section class="photos-container" *ngIf="!loading">
+<section  class="container-back-button">
+  <div id="back" (click)="goBack()">
+    <mat-icon>keyboard_backspace</mat-icon>
+    <span>Back</span>
+  </div>
+</section>
+<mat-card *ngFor="let photo of photos" class="photo-container">
+  <mat-card-header>
+    <mat-card-title>Photo: {{photo?.id}}</mat-card-title>
+  </mat-card-header>
+  <img class="photo-img" alt="" mat-card-image [src]="photo?.url">
+  <mat-card-content>
+    <p>{{photo?.title}}</p>
+  </mat-card-content>
+</mat-card>
+</section>

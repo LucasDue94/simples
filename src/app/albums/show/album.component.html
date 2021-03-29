@@ -1,0 +1,9 @@
+<mat-card class="album-container">
+  <mat-card-header>
+    <mat-card-title>Album: {{album?.id}}</mat-card-title>
+  </mat-card-header>
+  <img class="image" alt="" mat-card-image [src]="getUrl()">
+  <mat-card-content>
+    <p>{{album?.title}}</p>
+  </mat-card-content>
+</mat-card>
