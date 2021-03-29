@@ -9,7 +9,8 @@ import { User } from '../../core/models/user';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  form: FormGroup;
+  form!: FormGroup;
+  user: User = new User();
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
   }
@@ -31,4 +32,5 @@ export class LoginComponent implements OnInit {
       this.authService.login(user);
     }
   }
+
 }

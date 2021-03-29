@@ -26,11 +26,11 @@ export class PhotosComponent implements OnInit {
   getPhotos(): void {
     this.albumService.getPhotos(this.albumId).subscribe(photos => {
       this.photos = photos;
-      setTimeout(() => this.loading = false, 10000);
+      setTimeout(() => this.loading = false, 1000);
     });
   }
 
-  goBack() {
+  goBack(): void {
     this.router.navigate(['albums']);
   }
 }

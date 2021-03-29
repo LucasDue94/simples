@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./albums/albums.module')
       .then(m => m.AlbumsModule),
   },
+  {
+    path: '**',
+    redirectTo: 'albums'
+  }
 ];
 
 @NgModule({

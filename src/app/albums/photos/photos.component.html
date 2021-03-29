@@ -1,5 +1,5 @@
-<div id="spinner">
-  <mat-spinner *ngIf="loading"></mat-spinner>
+<div id="spinner" *ngIf="loading">
+  <mat-spinner [diameter]="50"></mat-spinner>
 </div>
 <section class="photos-container" *ngIf="!loading">
 <section  class="container-back-button">

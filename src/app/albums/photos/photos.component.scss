@@ -1,3 +1,5 @@
+$toolbar-height: 64px;
+
 .photo-img {
   width: 400px;
   height: 400px;
@@ -21,6 +23,7 @@
   margin: 0 20px;
 
   #back {
+    font-size: 18px;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -55,4 +58,5 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: calc(100vh - 64px);
 }

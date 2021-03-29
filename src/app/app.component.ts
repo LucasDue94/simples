@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from '../core/services/auth/auth.service';
-import { Router } from '@angular/router';
+import { User } from '../core/models/user';
 
 @Component({
   selector: 'app-root',
@@ -12,32 +9,25 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'Simples Dental';
-  private user = {
-    username: 'simples',
-    password: 'dental'
-  };
   isLogged = false;
+  user: User = new User();
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.HandsetPortrait)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
-
-  constructor(private breakpointObserver: BreakpointObserver,
-              private authService: AuthService,
-              private router: Router) {
-    // localStorage.removeItem('app_simples_dental');
-    // localStorage.setItem('app_simples_dental', JSON.stringify(this.user));
-    // console.log(JSON.parse(localStorage.getItem('app_simples_dental')));
+  constructor(private authService: AuthService) {
+    const storage = localStorage.getItem('app_simples_dental');
+    if (storage != null) {
+      this.user = JSON.parse(storage);
+    }
   }
 
   ngOnInit(): void {
     this.listenStorage();
     this.authService.isLogged().subscribe(bool => this.isLogged = bool);
+    this.getUser();
   }
 
-  hasStorage = (): boolean => localStorage.getItem('app_simples_dental') !== null;
+  getUser(): void {
+    this.authService.getUser().subscribe(user => this.user = user);
+  }
 
   listenStorage(): void {
     if (this.hasStorage()) {
@@ -47,6 +37,8 @@ export class AppComponent implements OnInit {
       this.isLogged = false;
     }
   }
+
+  hasStorage = (): boolean => localStorage.getItem('app_simples_dental') !== null;
 
   logout = () => this.authService.logout();
 }

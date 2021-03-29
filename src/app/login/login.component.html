@@ -1,8 +1,10 @@
 <section class="container-login">
   <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
     <mat-card>
+      <div>
+        <img id="tooth-image" src="assets/tooth.png" alt="">
+      </div>
       <mat-card-header>
-        <mat-card-title>Simples Dental</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <div class="row">
@@ -27,7 +29,7 @@
         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button class="button-larger" mat-raised-button color="primary" type="submit">Submit</button>
       </mat-card-actions>
     </mat-card>
   </form>

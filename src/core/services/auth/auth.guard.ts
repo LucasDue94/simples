@@ -14,7 +14,6 @@ export class AuthGuard implements CanActivate {
     const isLogged = localStorage.getItem('app_simples_dental') !== null;
 
 
-    console.log(isLogged);
     if (isLogged) {
       return true;
     }

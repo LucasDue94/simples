@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class AlbumsComponent implements OnInit {
 
   albums: Album[] = [];
+  loading = true;
 
   constructor(private albumsService: AlbumsService,
               private router: Router) {
@@ -18,15 +19,16 @@ export class AlbumsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAlbums();
-    // this.albumsService.list().subscribe(albums => this.albums = albums.map((album: Album) => new Album(album)));
   }
 
-  getAlbums() {
-    this.albumsService.list().subscribe((albums: Album[]) => this.albums = albums);
+  getAlbums(): void {
+    this.albumsService.list().subscribe((albums: Album[]) => {
+      this.albums = albums;
+      setTimeout(() => this.loading = false, 1000);
+    });
   }
 
   openAlbum(album: Album): void {
     this.router.navigate(['albums/show/' + album.id]);
-    // this.router.navigate(['photos/' + album.id]);
   }
 }
