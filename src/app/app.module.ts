@@ -11,7 +11,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { LoginComponent } from './login/login.component';
-import { FormComponent } from './form/form.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
@@ -23,7 +22,6 @@ import { AlbumsModule } from './albums/albums.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    FormComponent,
   ],
   imports: [
     BrowserModule,
